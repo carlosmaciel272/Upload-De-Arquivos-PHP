@@ -1,4 +1,4 @@
-
+![](screenshot.png)
 ## Descrição
 - Esse é um projeto desenvolvido durante o programa de estágio do PRODAP, no qual foi necessário o desenvolvimento de uma Widget de Upload de Arquivos para ser integrado em uma aplicação em produção do PRODAP.
 - Ele consiste em servidor web feito em PHP e uma interface usando Jqery, HTML, CSS e Java Script.

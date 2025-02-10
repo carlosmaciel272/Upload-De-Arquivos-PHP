@@ -1,224 +1,60 @@
-# jQuery File Upload
 
-## Contents
+## Descrição
+- Esse é um projeto desenvolvido durante o programa de estágio do PRODAP, no qual foi necessário o desenvolvimento de uma Widget de Upload de Arquivos para ser integrado em uma aplicação em produção do PRODAP.
+- Ele consiste em servidor web feito em PHP e uma interface usando Jqery, HTML, CSS e Java Script.
+- O objetivo do projeto era a possibilidade de realizar o upload de arquivos para o sistema como: (documentos de identificação, processos, clásulas de contratos etc...)
 
-- [Description](#description)
-- [Demo](#demo)
-- [Features](#features)
-- [Security](#security)
-- [Setup](#setup)
-- [Requirements](#requirements)
-  - [Mandatory requirements](#mandatory-requirements)
-  - [Optional requirements](#optional-requirements)
-  - [Cross-domain requirements](#cross-domain-requirements)
-- [Browsers](#browsers)
-  - [Desktop browsers](#desktop-browsers)
-  - [Mobile browsers](#mobile-browsers)
-  - [Extended browser support information](#extended-browser-support-information)
-- [Testing](#testing)
-- [Support](#support)
-- [License](#license)
+## Funcionalidades
 
-## Description
+- Upload de vários arquivos:
+Permite selecionar vários arquivos de uma vez e carregá-los simultaneamente.
+- Suporte para arrastar e soltar:
+Permite carregar arquivos arrastando-os da sua área de trabalho ou gerenciador de arquivos e soltando-os na janela do seu navegador.
+- Barra de progresso do upload:
+Mostra uma barra de progresso indicando o progresso do upload para arquivos individuais e para todos os uploads combinados.
+- Uploads canceláveis:
+Uploads de arquivos individuais podem ser cancelados para interromper o progresso do upload.
+- Uploads retomáveis:
+Uploads abortados podem ser retomados com navegadores que suportam a API Blob.
+- Uploads em blocos:
+Arquivos grandes podem ser carregados em blocos menores com navegadores que suportam a API Blob.
+- Redimensionamento de imagem do lado do cliente:
+As imagens podem ser redimensionadas automaticamente no lado do cliente com navegadores que suportam as APIs JS necessárias.
+- Visualizar imagens, áudio e vídeo:
+Uma visualização de arquivos de imagem, áudio e vídeo pode ser exibida antes do upload com navegadores que suportam as APIs necessárias.
+- Nenhum plugin de navegador (por exemplo, Adobe Flash) necessário:
+A implementação é baseada em padrões abertos como HTML5 e JavaScript e não requer plugins de navegador adicionais.
+- Fazer fallback elegante para navegadores legados:
+Carrega arquivos via XMLHttpRequests se suportado e usa iframes como fallback para navegadores legados.
+- Fazer fallback de formulário de upload de arquivo HTML:
+Permite aprimoramento progressivo usando um formulário de upload de arquivo HTML padrão como elemento de widget.
+- Uploads de arquivo entre sites:
+Suporta upload de arquivos para um domínio diferente com XMLHttpRequests entre sites ou redirecionamentos de iframe.
+- Múltiplas instâncias de plugin:
+Permite usar múltiplas instâncias de plugin na mesma página da web.
+- Personalizável e extensível:
+Fornece uma API para definir opções individuais e definir métodos de retorno de chamada para vários eventos de upload.
+- Uploads de fluxo de conteúdo de arquivo e multipartes:
+Os arquivos podem ser carregados como "multipart/form-data" padrão ou fluxo de conteúdo de arquivo (upload de arquivo HTTP PUT).
+- Compatível com qualquer plataforma de aplicativo do lado do servidor:
+Funciona com qualquer plataforma do lado do servidor (PHP, Python, Ruby on Rails, Java, Node.js, Go etc.) que suporte uploads de arquivos de formulário HTML padrão.
 
-> File Upload widget with multiple file selection, drag&drop support, progress
-> bars, validation and preview images, audio and video for jQuery.  
-> Supports cross-domain, chunked and resumable file uploads and client-side
-> image resizing.  
-> Works with any server-side platform (PHP, Python, Ruby on Rails, Java,
-> Node.js, Go etc.) that supports standard HTML form file uploads.
-
-## Demo
-
-[Demo File Upload](https://blueimp.github.io/jQuery-File-Upload/)
-
-## Features
-
-- **Multiple file upload:**  
-  Allows to select multiple files at once and upload them simultaneously.
-- **Drag & Drop support:**  
-  Allows to upload files by dragging them from your desktop or file manager and
-  dropping them on your browser window.
-- **Upload progress bar:**  
-  Shows a progress bar indicating the upload progress for individual files and
-  for all uploads combined.
-- **Cancelable uploads:**  
-  Individual file uploads can be canceled to stop the upload progress.
-- **Resumable uploads:**  
-  Aborted uploads can be resumed with browsers supporting the Blob API.
-- **Chunked uploads:**  
-  Large files can be uploaded in smaller chunks with browsers supporting the
-  Blob API.
-- **Client-side image resizing:**  
-  Images can be automatically resized on client-side with browsers supporting
-  the required JS APIs.
-- **Preview images, audio and video:**  
-  A preview of image, audio and video files can be displayed before uploading
-  with browsers supporting the required APIs.
-- **No browser plugins (e.g. Adobe Flash) required:**  
-  The implementation is based on open standards like HTML5 and JavaScript and
-  requires no additional browser plugins.
-- **Graceful fallback for legacy browsers:**  
-  Uploads files via XMLHttpRequests if supported and uses iframes as fallback
-  for legacy browsers.
-- **HTML file upload form fallback:**  
-  Allows progressive enhancement by using a standard HTML file upload form as
-  widget element.
-- **Cross-site file uploads:**  
-  Supports uploading files to a different domain with cross-site XMLHttpRequests
-  or iframe redirects.
-- **Multiple plugin instances:**  
-  Allows to use multiple plugin instances on the same webpage.
-- **Customizable and extensible:**  
-  Provides an API to set individual options and define callback methods for
-  various upload events.
-- **Multipart and file contents stream uploads:**  
-  Files can be uploaded as standard "multipart/form-data" or file contents
-  stream (HTTP PUT file upload).
-- **Compatible with any server-side application platform:**  
-  Works with any server-side platform (PHP, Python, Ruby on Rails, Java,
-  Node.js, Go etc.) that supports standard HTML form file uploads.
-
-## Security
-
-⚠️ Please read the [VULNERABILITIES](VULNERABILITIES.md) document for a list of
-fixed vulnerabilities
-
-Please also read the [SECURITY](SECURITY.md) document for instructions on how to
-securely configure your Web server for file uploads.
-
-## Setup
-
-jQuery File Upload can be installed via [NPM](https://www.npmjs.com/):
-
-```sh
-npm install blueimp-file-upload
+## Como Funciona
+### Dpendências
+- `docker`
+- `docker-compose`
+- `npm`
+### Inciando o Servidor 
+1. Primeiro entre na pasta do repositório clonado do github.
+```bash
+cd Upload-De-Arquivos-PHP
 ```
-
-This allows you to include [jquery.fileupload.js](js/jquery.fileupload.js) and
-its extensions via `node_modules`, e.g:
-
-```html
-<script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+2. Execute um `npm install` na pasta do projeto
 ```
-
-The widget can then be initialized on a file upload form the following way:
-
-```js
-$('#fileupload').fileupload();
+npm install
 ```
-
-For further information, please refer to the following guides:
-
-- [Main documentation page](https://github.com/blueimp/jQuery-File-Upload/wiki)
-- [List of all available Options](https://github.com/blueimp/jQuery-File-Upload/wiki/Options)
-- [The plugin API](https://github.com/blueimp/jQuery-File-Upload/wiki/API)
-- [How to setup the plugin on your website](https://github.com/blueimp/jQuery-File-Upload/wiki/Setup)
-- [How to use only the basic plugin.](https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin)
-
-## Requirements
-
-### Mandatory requirements
-
-- [jQuery](https://jquery.com/) v1.7+
-- [jQuery UI widget factory](https://api.jqueryui.com/jQuery.widget/) v1.9+
-  (included): Required for the basic File Upload plugin, but very lightweight
-  without any other dependencies from the jQuery UI suite.
-- [jQuery Iframe Transport plugin](https://github.com/blueimp/jQuery-File-Upload/blob/master/js/jquery.iframe-transport.js)
-  (included): Required for
-  [browsers without XHR file upload support](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support).
-
-### Optional requirements
-
-- [JavaScript Templates engine](https://github.com/blueimp/JavaScript-Templates)
-  v3+: Used to render the selected and uploaded files.
-- [JavaScript Load Image library](https://github.com/blueimp/JavaScript-Load-Image)
-  v2+: Required for the image previews and resizing functionality.
-- [JavaScript Canvas to Blob polyfill](https://github.com/blueimp/JavaScript-Canvas-to-Blob)
-  v3+:Required for the resizing functionality.
-- [blueimp Gallery](https://github.com/blueimp/Gallery) v2+: Used to display the
-  uploaded images in a lightbox.
-- [Bootstrap](https://getbootstrap.com/) v3+: Used for the demo design.
-- [Glyphicons](https://glyphicons.com/) Icon set used by Bootstrap.
-
-### Cross-domain requirements
-
-[Cross-domain File Uploads](https://github.com/blueimp/jQuery-File-Upload/wiki/Cross-domain-uploads)
-using the
-[Iframe Transport plugin](https://github.com/blueimp/jQuery-File-Upload/blob/master/js/jquery.iframe-transport.js)
-require a redirect back to the origin server to retrieve the upload results. The
-[example implementation](https://github.com/blueimp/jQuery-File-Upload/blob/master/js/main.js)
-makes use of
-[result.html](https://github.com/blueimp/jQuery-File-Upload/blob/master/cors/result.html)
-as a static redirect page for the origin server.
-
-The repository also includes the
-[jQuery XDomainRequest Transport plugin](https://github.com/blueimp/jQuery-File-Upload/blob/master/js/cors/jquery.xdr-transport.js),
-which enables limited cross-domain AJAX requests in Microsoft Internet Explorer
-8 and 9 (IE 10 supports cross-domain XHR requests).  
-The XDomainRequest object allows GET and POST requests only and doesn't support
-file uploads. It is used on the
-[Demo](https://blueimp.github.io/jQuery-File-Upload/) to delete uploaded files
-from the cross-domain demo file upload service.
-
-## Browsers
-
-### Desktop browsers
-
-The File Upload plugin is regularly tested with the latest browser versions and
-supports the following minimal versions:
-
-- Google Chrome
-- Apple Safari 4.0+
-- Mozilla Firefox 3.0+
-- Opera 11.0+
-- Microsoft Internet Explorer 6.0+
-
-### Mobile browsers
-
-The File Upload plugin has been tested with and supports the following mobile
-browsers:
-
-- Apple Safari on iOS 6.0+
-- Google Chrome on iOS 6.0+
-- Google Chrome on Android 4.0+
-- Default Browser on Android 2.3+
-- Opera Mobile 12.0+
-
-### Extended browser support information
-
-For a detailed overview of the features supported by each browser version and
-known operating system / browser bugs, please have a look at the
-[Extended browser support information](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support).
-
-## Testing
-
-The project comes with three sets of tests:
-
-1. Code linting using [ESLint](https://eslint.org/).
-2. Unit tests using [Mocha](https://mochajs.org/).
-3. End-to-end tests using [blueimp/wdio](https://github.com/blueimp/wdio).
-
-To run the tests, follow these steps:
-
-1. Start [Docker](https://docs.docker.com/).
-2. Install development dependencies:
-   ```sh
-   npm install
-   ```
-3. Run the tests:
-   ```sh
-   npm test
-   ```
-
-## Support
-
-This project is actively maintained, but there is no official support channel.  
-If you have a question that another developer might help you with, please post
-to
-[Stack Overflow](https://stackoverflow.com/questions/tagged/blueimp+jquery+file-upload)
-and tag your question with `blueimp jquery file upload`.
-
-## License
-
-Released under the [MIT license](https://opensource.org/licenses/MIT).
+3. Depois inicie um conteiner com `docker-compose`
+```
+sudo docker-compose up -d
+```
+4. Abra o navegador e digite a URL: `http://127.0.0.1:80`
